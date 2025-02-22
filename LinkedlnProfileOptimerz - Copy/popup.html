@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- Fix emoji display -->
+    <title>LinkedIn Analyzer</title>
+    <link rel="stylesheet" href="popup.css">
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            width: 300px; 
+            padding: 10px; 
+            text-align: center; 
+        }
+        button { 
+            width: 100%; 
+            padding: 10px; 
+            margin-top: 10px; 
+            background-color: #0073b1; 
+            color: white; 
+            border: none; 
+            cursor: pointer; 
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #005582;
+        }
+        select, #results { 
+            width: 100%; 
+            margin-top: 10px; 
+        }
+        #results {
+            margin-top: 15px; 
+            padding: 10px; 
+            border: 1px solid #ddd; 
+            background-color: #f9f9f9; 
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h3>🔍 LinkedIn Profile Analyzer</h3>
+    <label for="jobRole">Select Job Role:</label>
+    <select id="jobRole">
+        <option value="" disabled selected>📌 Choose a Job Role</option>
+        <option value="Full Stack Developer">Full Stack Developer</option>
+        <option value="AI Developer">AI Developer</option>
+        <option value="Data Scientist">Data Scientist</option>
+        <option value="Java Developer">Java Developer</option>
+        <option value="DevOps Engineer">DevOps Engineer</option>
+    </select>
+    <button id="analyzeBtn">🚀 Analyze Profile</button>
+    <div id="results"><p>Results will appear here...</p></div>
+    <script src="popup.js"></script>
+</body>
+</html>
