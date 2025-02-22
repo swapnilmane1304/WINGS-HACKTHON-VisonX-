@@ -202,8 +202,7 @@ function ResumeUpload() {
       const data = await res.json();
       console.log("data",data);
       setscore(data.score);
-      const clear=cleanText(data);
-      console.log('AI Response:', clear);
+     
       setResponse(clear);
     } catch (error) {
       console.error('Error uploading:', error);

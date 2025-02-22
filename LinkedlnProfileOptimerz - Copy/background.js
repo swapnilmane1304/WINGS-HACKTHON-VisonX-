@@ -73,6 +73,6 @@ function ApiCall(jobRole) {
                 `,
                 finalScore: response.finalScore
             });
-        }, 2000); // Simulate 2-second API delay
+        }, 5000); // Simulate 2-second API delay
     });
 }
