@@ -1,21 +1,69 @@
+// const { GoogleGenerativeAI } = require("@google/generative-ai");
+
+// const genAI = new GoogleGenerativeAI("AIzaSyAKpqRjEbSEz-dgNXTdv3e-yafbwtTxUJ4");
+
+// const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+// const q = async (prompt) => {
+//     try {
+//         const result = await model.generateContent(prompt);
+//         const response = await result.response; 
+//         const text = await response.text(); // Wait for text extraction
+//         console.log("AI Response:", text);
+//         return text;
+//     } catch (error) {
+//         console.error("Error:", error);
+//         return null;
+//     }
+// };
+
+
+// module.exports = q; // Export function
+
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 const genAI = new GoogleGenerativeAI("AIzaSyAKpqRjEbSEz-dgNXTdv3e-yafbwtTxUJ4");
 
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
+const filterResponse = (text) => {
+    if (!text) return "No response received.";
+
+    // Remove asterisks (*) from text
+    text = text.replace(/\*/g, "");
+
+    // Trim whitespace and remove excessive blank lines
+    let lines = text.trim().split("\n").filter(line => line.trim() !== "");
+
+    // Remove duplicate lines
+    let uniqueLines = [...new Set(lines)];
+
+    // Join back into a filtered response
+    let filteredText = uniqueLines.join("\n");
+
+    // Limit response length (e.g., max 1500 characters)
+   
+
+    return filteredText;
+};
+
+
 const q = async (prompt) => {
     try {
         const result = await model.generateContent(prompt);
-        const response = await result.response; 
-        console.log("response",response);
-        console.log("AI Response:", response.text());
+        const response = result.response;
+        const text = response.text(); 
+
+        const filteredText =filterResponse(text); // Apply filtering
+        console.log("Filtered AI Response:", filteredText);
+        return filteredText;
     } catch (error) {
         console.error("Error:", error);
+        return null;
     }
 };
-
-module.exports = q; // Export function
+module.exports = q;
+// Example usage
 
 
 // In your terminal, first run:

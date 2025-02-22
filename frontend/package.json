@@ -1,5 +1,5 @@
 {
-  "name": "resume-analyzer",
+  "name": "frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,14 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@chakra-ui/react": "^3.8.1",
-    "axios": "^1.7.9",
-    "bootstrap": "^5.3.3",
     "marked": "^15.0.7",
     "react": "^19.0.0",
-    "react-bootstrap": "^2.10.9",
-    "react-dom": "^19.0.0",
-    "react-toastify": "^11.0.3"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",

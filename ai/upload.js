@@ -39,25 +39,24 @@ const pdfupload = async (req, res) => {
     }
 
     try {
-        console.log(req.file);
         const pdfPath = req.file.path;
         const dataBuffer = fs.readFileSync(pdfPath);
-        const {Job_Name} = req.body;
-        console.log(Job_Name)
-        
-        const data = await pdfParse(dataBuffer);
-        
-        
-        fs.unlinkSync(pdfPath);
-const prompt = data.text;
-        
-        q(`${prompt} imporve the resume with some key changes according to the job roles  '${Job_Name}'`);
+        const { Job_Name } = req.body;
 
-        res.json({ text: data.text });
+        console.log("Processing for Job:", Job_Name);
+        const data = await pdfParse(dataBuffer);
+
+        fs.unlinkSync(pdfPath); // Remove file after parsing
+        const prompt = `${data.text} return key point in resume '${Job_Name}'`;
+
+        const improvedResume = await q(prompt); // Await AI response
+        console.log("reponse",)
+        res.json({ text: improvedResume || "Error generating response" });
     } catch (error) {
         console.error("Error processing PDF:", error);
         res.status(500).json({ error: "Error processing PDF", details: error.message });
     }
 };
+
 
 module.exports = pdfupload;
