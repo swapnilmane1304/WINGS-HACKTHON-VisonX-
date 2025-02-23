@@ -14,8 +14,7 @@ load_dotenv()
 
 app = FastAPI()
 
-genai.configure(api_key="AIzaSyCtn5LA2tv8DTYvX8YZXWb-I-6fjaQEkh4")
-#AIzaSyCtn5LA2tv8DTYvX8YZXWb-I-6fjaQEkh4
+genai.configure(api_key="")
 
 app.add_middleware(
     CORSMiddleware,
